@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#280dc2"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/log_in_email"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:background="@drawable/edit_round"
+            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:hint="Enter Email"
+            android:textAlignment="textStart"
+            android:textColor="#0F0E0D"
+            android:textSize="25dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/log_in_pswrd"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:hint="Enter Password"
+            android:paddingRight="15dp"
+            android:background="@drawable/edit_round"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:password="true"
+            android:textAlignment="textStart"
+            android:textColor="#0F0E0D"
+            android:textSize="25dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <ProgressBar
+            android:id="@+id/loginProgressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/maven_pro_medium"
+            android:text="l o g i n"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:background="@drawable/round_btn"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abhaya_libre_extrabold"
+            android:text="OR"
+            android:textAlignment="center"
+            android:textColor="#9B9FBB"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/fbButton"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:bufferType="editable"
+            android:drawableLeft="@drawable/ic_facebook"
+            android:textColor="#EAF2F3"
+            android:fontFamily="@font/maven_pro_medium"
+            android:text="Facebook Login"
+            android:paddingLeft="30dp"
+            android:background="@drawable/rectangle_button"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="300dp"
+            android:id="@+id/gmailButton"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:bufferType="editable"
+            android:paddingLeft="30dp"
+            android:fontFamily="@font/maven_pro_medium"
+            android:drawableLeft="@drawable/ic_gmail"
+            android:text="Gmail Login"
+            android:background="@drawable/rectangle_button"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+        <Button
+            android:id="@+id/forgotPswrdButton"
+            android:layout_width="400dp"
+            android:layout_height="65dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="#280dc2"
+            android:fontFamily="@font/eczar_semibold"
+            android:text="Forgot Your Password ?"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#EFF5F5"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>
