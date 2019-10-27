@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -20,10 +21,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DoctorRegistrationForm extends AppCompatActivity {
 
-    EditText txt_fullname,txt_email,txt_password,txt_cnf_password;
+    EditText txt_fullname,txt_email,txt_age,txt_specialization,txt_location,txt_password,txt_cnf_password;
     Button btn_register;
     RadioButton radioGenderMale,radioGenderFemale;
-    String gender="";
+    String Gender="";
+    ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
 
     DatabaseReference databaseReference;
@@ -35,14 +37,17 @@ public class DoctorRegistrationForm extends AppCompatActivity {
 
         txt_fullname=(EditText)findViewById(R.id.txtFullName);
         txt_email=(EditText)findViewById(R.id.txt_email);
+        txt_age=(EditText)findViewById(R.id.txt_age);
+        txt_specialization=(EditText)findViewById(R.id.txt_specialization);
+        txt_location=(EditText)findViewById(R.id.txt_location);
         txt_password=(EditText)findViewById(R.id.password);
         txt_cnf_password=(EditText)findViewById(R.id.cnfpassword);
         btn_register=(Button)findViewById(R.id.doctor_registration);
         radioGenderMale=(RadioButton)findViewById(R.id.radio_male);
         radioGenderFemale=(RadioButton)findViewById(R.id.radio_female);
 
-        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        progressBar = (ProgressBar) findViewById(R.id.doctorRegisterProgressbar);
+
 
         databaseReference=FirebaseDatabase.getInstance().getReference("Doctor");
         firebaseAuth= FirebaseAuth.getInstance();
@@ -53,35 +58,45 @@ public class DoctorRegistrationForm extends AppCompatActivity {
 
                 System.out.println("Hello");
 
-                final String fullName=txt_fullname.getText().toString();
-                final String email=txt_email.getText().toString();
-                String password=txt_password.getText().toString();
-                String cnfPassword=txt_cnf_password.getText().toString();
+                final String FullName = txt_fullname.getText().toString();
+                final String Email = txt_email.getText().toString();
+                final String Age = txt_age.getText().toString();
+                final String Specialization = txt_specialization.getText().toString();
+                final String Location = txt_location.getText().toString();
+                String password = txt_password.getText().toString();
+                String cnfPassword = txt_cnf_password.getText().toString();
 
-               if(radioGenderMale.isChecked()){
+                if (radioGenderMale.isChecked()) {
 
-                   gender="Male";
-               }
-
-                if(radioGenderFemale.isChecked()){
-
-                    gender="Female";
+                    Gender = "Male";
                 }
 
-                    firebaseAuth.createUserWithEmailAndPassword(email, password)
+                if (radioGenderFemale.isChecked()) {
+
+                    Gender = "Female";
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                if (password.equals(cnfPassword)) {
+
+                    firebaseAuth.createUserWithEmailAndPassword(Email, password)
                             .addOnCompleteListener(DoctorRegistrationForm.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                    //progressBar.setVisibility(View.GONE);
+                                    progressBar.setVisibility(View.GONE);
 
                                     if (task.isSuccessful()) {
 
 
-                                        Doctor information =  new Doctor(
-                                                fullName,
-                                                email,
-                                                gender
+                                        Doctor information = new Doctor(
+                                                FullName,
+                                                Email,
+                                                Age,
+                                                Specialization,
+                                                Location,
+                                                Gender
                                         );
 
                                         FirebaseDatabase.getInstance().getReference("Doctor")
@@ -91,7 +106,7 @@ public class DoctorRegistrationForm extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
 
                                                 Toast.makeText(DoctorRegistrationForm.this, "Registration Complete", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(getApplicationContext(),NavigationDrawerActivity.class));
+                                                startActivity(new Intent(getApplicationContext(), NavigationDrawerActivity.class));
 
 
                                             }
@@ -102,8 +117,10 @@ public class DoctorRegistrationForm extends AppCompatActivity {
 
                                     } else {
 
+                                        Toast.makeText(DoctorRegistrationForm.this, "Authentication Failed or Check Your Internet Connection", Toast.LENGTH_SHORT).show();
 
                                     }
+
 
                                     // ...
                                 }
@@ -111,9 +128,12 @@ public class DoctorRegistrationForm extends AppCompatActivity {
 
                 }
 
+                else{
+                    Toast.makeText(DoctorRegistrationForm.this, "Password Mismatch", Toast.LENGTH_SHORT).show();
+                }
+            }
+
         });
-
-
 
     }
 }

@@ -1,15 +1,18 @@
 package com.example.demo;
 
 public class Doctor {
-    public String fullName,email,gender;
+    public String FullName,Email,Age,Specialization,Location,Gender;
 
     public Doctor(){
 
     }
 
-    public Doctor(String fullName, String email, String gender) {
-        this.fullName = fullName;
-        this.email = email;
-        this.gender = gender;
+    public Doctor(String fullName, String email, String age, String specialization, String location, String gender) {
+        FullName = fullName;
+        Email = email;
+        Age = age;
+        Specialization = specialization;
+        Location = location;
+        Gender = gender;
     }
 }

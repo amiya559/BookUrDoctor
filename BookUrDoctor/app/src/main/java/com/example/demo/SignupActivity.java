@@ -50,13 +50,11 @@ public class SignupActivity extends AppCompatActivity {
                 if (stringEmail.isEmpty() ||  stringPswrd.isEmpty() || stringCnfPswrd.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Fields can't be blank", Toast.LENGTH_LONG).show();
                 }
-                else {
-                    Toast.makeText(SignupActivity.this, "Successfully Signed Up", Toast.LENGTH_SHORT).show();
-                }
 
-                if(stringPswrd.length()<4){
-                        Toast.makeText(SignupActivity.this, "Password Too Short", Toast.LENGTH_SHORT).show();
-                }
+
+              //  if(stringPswrd.length()<4){
+             //           Toast.makeText(SignupActivity.this, "Password Too Short", Toast.LENGTH_SHORT).show();
+             //   }
 
                 progressBar.setVisibility(View.VISIBLE);
 
@@ -72,8 +70,8 @@ public class SignupActivity extends AppCompatActivity {
 
                                         if (task.isSuccessful()) {
 
-                                            startActivity(new Intent(getApplicationContext(),NavigationDrawerActivity.class));
                                             Toast.makeText(SignupActivity.this, "Registration Complete", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(),NavigationDrawerActivity.class));
 
                                         } else {
 

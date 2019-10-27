@@ -68,13 +68,12 @@ public class LoginActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 
                                 if (task.isSuccessful()) {
-
-                                    startActivity(new Intent(getApplicationContext(), NavigationDrawerActivity.class));
                                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), NavigationDrawerActivity.class));
 
                                 } else {
 
-                                    Toast.makeText(LoginActivity.this, "Invalid Email/Password or Check Your Internet", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Invalid Email/Password or Check Your Internet Connection", Toast.LENGTH_SHORT).show();
                                 }
 
                                 // ...
