@@ -1,0 +1,45 @@
+User
+======
+ID	Username	Password	DoctorProfile
+1	sobhan		password	null
+2
+
+DoctorProfile
+SpecializationID
+
+Specialization Table
+===============
+1	Medicine
+2	Eye
+3	Cancer
+
+
+
+
+
+Booking
+======	
+DoctorID PatientID	PatientDetails
+
+
+DoctorProfile
+=============
+Age	Specialization		Profile		Designation
+
+{
+	PatientInfo : 997
+	DOctorInfo: 98986
+	PatientDetails: {}
+}
+
+
+
+
+
+Doctor Register
+===============
+
+
+1. Phone No. => OTP
+2. Password
+3. Age S, specialfsf.. 
